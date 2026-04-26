@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Modernized AI — Elliott Bregni</title>
+    <title>Elliott Bregni</title>
     <meta name="description" content="Modernized AI LLC — agents, runtimes, and developer tools built by Elliott Bregni." />
     <meta name="theme-color" content="#09090b" />
     <meta property="og:type" content="website" />
@@ -63,7 +63,7 @@
     <nav id="nav" class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-zinc-950/75 border-b border-zinc-900 transition-all duration-300">
       <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#top" class="font-mono text-sm text-white tracking-tight flex items-center gap-1.5">
-          <span class="text-indigo-400">◈</span>modernized-ai<span class="text-zinc-600">.com</span>
+          <span class="text-indigo-400">◈</span><span id="nav-domain-name" class="transition-opacity duration-300">elliott.bregni</span><span class="text-zinc-600">.com</span>
         </a>
         <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
           <a href="#about" class="hover:text-white transition-colors">About</a>
@@ -73,61 +73,10 @@
       </div>
     </nav>
 
-    <!-- HERO -->
-    <section id="top" class="relative min-h-screen flex items-center grid-bg overflow-hidden">
-      <div class="hero-glow"></div>
-      <div class="hero-fade"></div>
-      <div class="relative max-w-6xl mx-auto px-6 pt-32 pb-40 w-full">
-        <div class="font-mono text-xs text-zinc-500 mb-10 flex items-center gap-2">
-          <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          ONLINE · MODERNIZED-AI.COM · ANN ARBOR, MI
-        </div>
-        <h1 class="text-[clamp(3.5rem,10vw,7rem)] font-black tracking-[-0.03em] leading-[0.92] mb-8 shimmer-text">
-          <span class="word-reveal" style="animation-delay:0.1s">Modernized</span><br/>
-          <span class="word-reveal" style="animation-delay:0.22s">AI.</span>
-        </h1>
-        <p class="text-lg md:text-xl text-zinc-400 max-w-xl mb-4 leading-relaxed">
-          Agents, runtimes, and developer tools<br class="hidden md:block"/>built by <span class="text-white font-semibold">Elliott Bregni</span>.
-        </p>
-        <p class="font-mono text-sm text-zinc-600 mb-10 min-h-[1.5rem]"><span id="typewriter"></span></p>
-        <div class="flex flex-wrap gap-3">
-          <a href="#projects" class="px-5 py-3 bg-white text-black text-sm font-semibold rounded-lg hover:bg-zinc-100 transition-colors">See the work →</a>
-          <a href="login.html" class="px-5 py-3 border border-zinc-800 text-zinc-100 text-sm font-medium rounded-lg hover:bg-zinc-900 hover:border-indigo-400/40 transition-all">Sign in</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- STATS BAR -->
-    <div class="stats-bar bg-zinc-950/90 backdrop-blur-sm">
-      <div class="max-w-6xl mx-auto px-6 py-5 flex flex-wrap items-center">
-        <div class="flex-1 min-w-[120px] flex flex-col items-center border-r border-zinc-800 px-4 first:pl-0">
-          <span class="font-mono text-2xl font-bold text-white">49</span>
-          <span class="font-mono text-xs text-zinc-500 mt-0.5">PLUGINS</span>
-        </div>
-        <div class="flex-1 min-w-[120px] flex flex-col items-center border-r border-zinc-800 px-4">
-          <span class="font-mono text-2xl font-bold text-white">100+</span>
-          <span class="font-mono text-xs text-zinc-500 mt-0.5">TOOLS</span>
-        </div>
-        <div class="flex-1 min-w-[120px] flex flex-col items-center border-r border-zinc-800 px-4">
-          <span class="font-mono text-2xl font-bold text-white">6</span>
-          <span class="font-mono text-xs text-zinc-500 mt-0.5">INTEGRATIONS</span>
-        </div>
-        <div class="flex-1 min-w-[120px] flex flex-col items-center border-r border-zinc-800 px-4">
-          <span class="font-mono text-2xl font-bold text-white">v2026</span>
-          <span class="font-mono text-xs text-zinc-500 mt-0.5">CURRENT</span>
-        </div>
-        <div class="hidden lg:flex flex-1 min-w-[180px] flex-col items-end px-4">
-          <span class="font-mono text-xs text-emerald-400 flex items-center gap-1.5">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse inline-block"></span>ALL SYSTEMS OPERATIONAL
-          </span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ABOUT (Day Job → personal → LLC container) -->
-    <section id="about" class="border-t border-zinc-900">
-      <div class="max-w-6xl mx-auto px-6 py-28">
-        <!-- Day Job · Overhaul -->
+    <!-- DAY JOB (lead) -->
+    <section id="day-job" class="relative overflow-hidden">
+      <div class="hero-glow opacity-40"></div>
+      <div class="relative max-w-6xl mx-auto px-6 pt-32 pb-24">
         <div class="flex items-center gap-3 mb-8 reveal flex-wrap">
           <span class="font-mono text-xs text-zinc-500 tracking-wider uppercase">/ Day Job</span>
           <span class="font-mono text-[10px] px-2 py-0.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded uppercase tracking-wider">NDA</span>
@@ -145,10 +94,15 @@
         <p class="text-zinc-600 font-mono text-xs uppercase tracking-[0.3em] mb-10 reveal reveal-d2">
           in-transit security · chain of custody · cargo that matters
         </p>
-        <p class="text-zinc-500 text-sm reveal reveal-d3 max-w-md mb-24">
+        <p class="text-zinc-500 text-sm reveal reveal-d3 max-w-md">
           Quiet build on secure, real-time supply-chain visibility — observability, chain-of-custody, and hardening for goods that can't afford to disappear. Only what's already public, for now.
         </p>
+      </div>
+    </section>
 
+    <!-- ABOUT (personal → LLC container) -->
+    <section id="about" class="border-t border-zinc-900">
+      <div class="max-w-6xl mx-auto px-6 py-28">
         <div class="flex items-center gap-3 mb-6 reveal flex-wrap">
           <span class="font-mono text-xs text-zinc-500 tracking-wider uppercase">/ Me</span>
         </div>
@@ -266,6 +220,53 @@
       </div>
     </section>
 
+    <!-- HERO -->
+    <section id="top" class="relative flex items-center grid-bg overflow-hidden border-t border-zinc-900">
+      <div class="hero-glow"></div>
+      <div class="hero-fade"></div>
+      <div class="relative max-w-6xl mx-auto px-6 pt-32 pb-32 w-full">
+        <h1 class="text-[clamp(3.5rem,10vw,7rem)] font-black tracking-[-0.03em] leading-[0.92] mb-8 text-white">
+          <span class="word-reveal shimmer-text" style="animation-delay:0.1s">Modernized</span><br/>
+          <span class="word-reveal shimmer-text" style="animation-delay:0.22s">AI.</span>
+        </h1>
+        <p class="text-lg md:text-xl text-zinc-400 max-w-xl mb-4 leading-relaxed">
+          Agents, runtimes, and developer tools<br class="hidden md:block"/>built by <span class="text-white font-semibold">Elliott Bregni</span>.
+        </p>
+        <p class="font-mono text-sm text-zinc-600 mb-10 min-h-[1.5rem]"><span id="typewriter"></span></p>
+        <div class="flex flex-wrap gap-3">
+          <a href="#projects" class="px-5 py-3 bg-white text-black text-sm font-semibold rounded-lg hover:bg-zinc-100 transition-colors">See the work →</a>
+          <a href="login.html" class="px-5 py-3 border border-zinc-800 text-zinc-100 text-sm font-medium rounded-lg hover:bg-zinc-900 hover:border-indigo-400/40 transition-all">Sign in</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar bg-zinc-950/90 backdrop-blur-sm">
+      <div class="max-w-6xl mx-auto px-6 py-5 flex flex-wrap items-center">
+        <div class="flex-1 min-w-[120px] flex flex-col items-center border-r border-zinc-800 px-4 first:pl-0">
+          <span class="font-mono text-2xl font-bold text-white">49</span>
+          <span class="font-mono text-xs text-zinc-500 mt-0.5">PLUGINS</span>
+        </div>
+        <div class="flex-1 min-w-[120px] flex flex-col items-center border-r border-zinc-800 px-4">
+          <span class="font-mono text-2xl font-bold text-white">100+</span>
+          <span class="font-mono text-xs text-zinc-500 mt-0.5">TOOLS</span>
+        </div>
+        <div class="flex-1 min-w-[120px] flex flex-col items-center border-r border-zinc-800 px-4">
+          <span class="font-mono text-2xl font-bold text-white">6</span>
+          <span class="font-mono text-xs text-zinc-500 mt-0.5">INTEGRATIONS</span>
+        </div>
+        <div class="flex-1 min-w-[120px] flex flex-col items-center border-r border-zinc-800 px-4">
+          <span class="font-mono text-2xl font-bold text-white">v2026</span>
+          <span class="font-mono text-xs text-zinc-500 mt-0.5">CURRENT</span>
+        </div>
+        <div class="hidden lg:flex flex-1 min-w-[180px] flex-col items-end px-4">
+          <span class="font-mono text-xs text-emerald-400 flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse inline-block"></span>ALL SYSTEMS OPERATIONAL
+          </span>
+        </div>
+      </div>
+    </div>
+
     <!-- PROJECTS -->
     <section id="projects" class="border-t border-zinc-900">
       <div class="max-w-6xl mx-auto px-6 py-28">
@@ -355,6 +356,24 @@
 
       const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
       document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+      const navDomain=document.getElementById('nav-domain-name');
+      const heroEl=document.getElementById('top');
+      if(navDomain&&heroEl){
+        let lastState=null;
+        const applyState=(isModernized)=>{
+          if(isModernized===lastState)return;
+          lastState=isModernized;
+          navDomain.style.opacity='0';
+          setTimeout(()=>{navDomain.textContent=isModernized?'modernized-ai':'elliott.bregni';navDomain.style.opacity='1';},150);
+          document.title=isModernized?'Modernized AI':'Elliott Bregni';
+        };
+        const navObs=new IntersectionObserver(entries=>entries.forEach(e=>{
+          const pastHero=e.boundingClientRect.top<0;
+          applyState(e.isIntersecting||pastHero);
+        }),{threshold:0.25});
+        navObs.observe(heroEl);
+      }
 
       document.querySelectorAll('.tilt-card').forEach(card=>{
         card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-0.5;const y=(e.clientY-r.top)/r.height-0.5;card.style.transform=`perspective(900px) rotateY(${x*6}deg) rotateX(${-y*6}deg) scale3d(1.01,1.01,1.01)`;});
