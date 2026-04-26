@@ -31,7 +31,7 @@
       @keyframes word-in{from{opacity:0;transform:translateY(28px) skewY(4deg);filter:blur(6px);}to{opacity:1;transform:none;filter:blur(0);}}
       .word-reveal{display:inline-block;opacity:0;animation:word-in 0.7s cubic-bezier(0.16,1,0.3,1) forwards;}
       @keyframes blink{50%{opacity:0;}}
-      #typewriter::after{content:"▋";animation:blink 1s step-end infinite;}
+      #typewriter::after,#typewriter2::after{content:"▋";animation:blink 1s step-end infinite;}
       nav.scrolled{border-color:rgba(99,102,241,0.2);box-shadow:0 1px 30px rgba(99,102,241,0.07);}
       .stats-bar{border-top:1px solid #18181b;border-bottom:1px solid #18181b;}
       .tilt-card{transform-style:preserve-3d;transition:transform 0.12s ease,box-shadow 0.12s ease;will-change:transform;cursor:pointer;position:relative;overflow:hidden;}
@@ -149,7 +149,11 @@
           Quiet build on secure, real-time supply-chain visibility — observability, chain-of-custody, and hardening for goods that can't afford to disappear. Only what's already public, for now.
         </p>
 
-        <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-14 reveal reveal-d1">Hi, I'm Elliott.</h2>
+        <div class="flex items-center gap-3 mb-6 reveal flex-wrap">
+          <span class="font-mono text-xs text-zinc-500 tracking-wider uppercase">/ Me</span>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4 reveal reveal-d1">Hi, I'm Elliott Bregni.</h2>
+        <p class="font-mono text-sm text-zinc-600 mb-14 min-h-[1.5rem] reveal reveal-d2"><span id="typewriter2"></span></p>
 
         <div class="grid md:grid-cols-5 gap-10 mb-14 reveal reveal-d2">
           <div class="md:col-span-3 text-lg text-zinc-300 leading-relaxed space-y-5">
@@ -339,11 +343,15 @@
       const nav = document.getElementById('nav');
       window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), {passive:true});
 
-      const phrases = ['SWE III · Full-stack engineer','Building agents that actually work.','FreightVerify → Overhaul','Modernized AI','B.S. CIS · Ferris State University'];
-      let pi=0,ci=0,del=false;
-      const tw=document.getElementById('typewriter');
-      function tick(){const p=phrases[pi];if(!del){tw.textContent=p.slice(0,++ci);if(ci===p.length){del=true;setTimeout(tick,2200);return;}setTimeout(tick,42);}else{tw.textContent=p.slice(0,--ci);if(ci===0){del=false;pi=(pi+1)%phrases.length;setTimeout(tick,400);return;}setTimeout(tick,22);}}
-      setTimeout(tick,900);
+      function makeTypewriter(elId,phrases,startDelay){
+        const tw=document.getElementById(elId);
+        if(!tw)return;
+        let pi=0,ci=0,del=false;
+        function tick(){const p=phrases[pi];if(!del){tw.textContent=p.slice(0,++ci);if(ci===p.length){del=true;setTimeout(tick,2200);return;}setTimeout(tick,42);}else{tw.textContent=p.slice(0,--ci);if(ci===0){del=false;pi=(pi+1)%phrases.length;setTimeout(tick,400);return;}setTimeout(tick,22);}}
+        setTimeout(tick,startDelay);
+      }
+      makeTypewriter('typewriter',['SWE III · Full-stack engineer','Ann Arbor, MI', 'Building agents that actually work.', 'Modernized AI', 'AI agents · MCP · RAG · Harness'],900);
+      makeTypewriter('typewriter2',['SWE III · Full-stack engineer','Ann Arbor, MI','FreightVerify → Overhaul','Modernized AI','10 years building','B.S. CIS · Ferris State University'],1400);
 
       const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
       document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
