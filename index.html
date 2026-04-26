@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Modernized AI — Elliott Bregni</title>
+    <meta
+      name="description"
+      content="Modernized AI LLC — an IP holding company for the systems, tools, and ideas built by Elliott Bregni."
+    />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Modernized AI — Elliott Bregni" />
+    <meta
+      property="og:description"
+      content="An IP holding company for the systems, tools, and ideas built by Elliott Bregni."
+    />
+    <meta property="og:url" content="https://modernized-ai.com" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "system-ui", "sans-serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Inter", system-ui, sans-serif;
+      }
+      .gradient-text {
+        background: linear-gradient(180deg, #ffffff 0%, #71717a 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .grid-bg {
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+        background-size: 48px 48px;
+        background-position: -1px -1px;
+      }
+      .glow {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 60% 50% at 50% 0%,
+          rgba(99, 102, 241, 0.18),
+          transparent 60%
+        );
+        pointer-events: none;
+      }
+      .ascii {
+        font-family: "JetBrains Mono", monospace;
+        white-space: pre;
+        line-height: 1.1;
+      }
+    </style>
+  </head>
+  <body class="bg-zinc-950 text-zinc-100 antialiased selection:bg-white selection:text-black">
+    <!-- Nav -->
+    <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-zinc-950/70 border-b border-zinc-900">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="#top" class="font-mono text-sm text-white tracking-tight">
+          modernized-ai<span class="text-zinc-600">.com</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
+          <a href="#about" class="hover:text-white transition">About</a>
+          <a href="#projects" class="hover:text-white transition">Projects</a>
+          <a href="#llc" class="hover:text-white transition">Modernized AI</a>
+          <a href="#contact" class="hover:text-white transition">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="top" class="relative min-h-screen flex items-center grid-bg overflow-hidden">
+      <div class="glow"></div>
+      <div class="relative max-w-6xl mx-auto px-6 py-32 w-full">
+        <div class="font-mono text-xs text-zinc-500 mb-8 flex items-center gap-2">
+          <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          ONLINE · MODERNIZED-AI.COM
+        </div>
+        <h1 class="text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight gradient-text mb-8 leading-[0.95]">
+          Modernized<br />AI.
+        </h1>
+        <p class="text-lg md:text-xl text-zinc-400 max-w-2xl mb-10 leading-relaxed">
+          A holding company for the agents, runtimes, and developer tools
+          built by <span class="text-white font-medium">Elliott Bregni</span>.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a
+            href="#projects"
+            class="px-5 py-3 bg-white text-black font-medium rounded-md hover:bg-zinc-200 transition"
+          >
+            See the work →
+          </a>
+          <a
+            href="#contact"
+            class="px-5 py-3 border border-zinc-800 text-zinc-100 font-medium rounded-md hover:bg-zinc-900 hover:border-zinc-700 transition"
+          >
+            Get in touch
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="border-t border-zinc-900 relative">
+      <div class="max-w-6xl mx-auto px-6 py-32">
+        <div class="font-mono text-xs text-zinc-500 mb-6">/ ABOUT</div>
+        <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-16">
+          Hi, I'm Elliott.
+        </h2>
+        <div class="grid md:grid-cols-2 gap-12 text-lg text-zinc-300 leading-relaxed">
+          <div class="space-y-6">
+            <p>
+              I build AI agents, developer tooling, and the infrastructure
+              underneath them. My work focuses on systems that augment how
+              people collaborate with models — runtimes, memory, orchestration,
+              and the boring plumbing that makes any of it useful in practice.
+            </p>
+            <p>
+              Most of what I ship lives at the intersection of
+              <span class="text-white">backend systems</span>,
+              <span class="text-white">LLM agents</span>, and
+              <span class="text-white">developer experience</span>.
+            </p>
+          </div>
+          <div class="space-y-6">
+            <div class="border border-zinc-800 rounded-lg p-6 bg-zinc-900/30">
+              <div class="font-mono text-xs text-zinc-500 mb-3">FOCUS AREAS</div>
+              <ul class="space-y-2 text-zinc-300 text-base">
+                <li class="flex gap-3">
+                  <span class="text-zinc-600">→</span>
+                  Multi-backend agent runtimes
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-zinc-600">→</span>
+                  Vector memory & retrieval
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-zinc-600">→</span>
+                  MCP servers & tool integrations
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-zinc-600">→</span>
+                  Autonomous & multi-agent systems
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-zinc-600">→</span>
+                  Developer tooling & CLI design
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="border-t border-zinc-900">
+      <div class="max-w-6xl mx-auto px-6 py-32">
+        <div class="font-mono text-xs text-zinc-500 mb-6">/ PROJECTS</div>
+        <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-16">
+          What I'm building.
+        </h2>
+
+        <div class="grid gap-4">
+          <!-- Obscura -->
+          <a
+            href="https://github.com/ElliottBregni/obscura"
+            target="_blank"
+            rel="noopener"
+            class="block p-8 border border-zinc-800 rounded-xl hover:border-zinc-600 hover:bg-zinc-900/40 transition group"
+          >
+            <div class="flex items-start justify-between gap-6">
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-3">
+                  <h3 class="text-2xl font-semibold">Obscura</h3>
+                  <span class="font-mono text-xs px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded">
+                    ACTIVE
+                  </span>
+                </div>
+                <p class="text-zinc-400 mb-4 max-w-3xl">
+                  Multi-backend AI agent runtime — CLI, REST API, Web UI, and
+                  MCP server. Supports Claude, OpenAI, GitHub Copilot, and
+                  local LLMs. 100+ tools, vector memory, multi-agent
+                  orchestration, and 49 plugin integrations.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="font-mono text-xs px-2 py-1 bg-zinc-900 border border-zinc-800 rounded text-zinc-400">Python</span>
+                  <span class="font-mono text-xs px-2 py-1 bg-zinc-900 border border-zinc-800 rounded text-zinc-400">FastAPI</span>
+                  <span class="font-mono text-xs px-2 py-1 bg-zinc-900 border border-zinc-800 rounded text-zinc-400">MCP</span>
+                  <span class="font-mono text-xs px-2 py-1 bg-zinc-900 border border-zinc-800 rounded text-zinc-400">Qdrant</span>
+                </div>
+              </div>
+              <div class="text-zinc-600 group-hover:text-zinc-300 group-hover:translate-x-1 transition transform text-2xl">
+                ↗
+              </div>
+            </div>
+          </a>
+
+          <!-- Moltbook -->
+          <a
+            href="https://moltbook.com"
+            target="_blank"
+            rel="noopener"
+            class="block p-8 border border-zinc-800 rounded-xl hover:border-zinc-600 hover:bg-zinc-900/40 transition group"
+          >
+            <div class="flex items-start justify-between gap-6">
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-3">
+                  <h3 class="text-2xl font-semibold">Moltbook</h3>
+                  <span class="font-mono text-xs px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded">
+                    LIVE
+                  </span>
+                </div>
+                <p class="text-zinc-400 mb-4 max-w-3xl">
+                  Live at moltbook.com.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="font-mono text-xs px-2 py-1 bg-zinc-900 border border-zinc-800 rounded text-zinc-400">moltbook.com</span>
+                </div>
+              </div>
+              <div class="text-zinc-600 group-hover:text-zinc-300 group-hover:translate-x-1 transition transform text-2xl">
+                ↗
+              </div>
+            </div>
+          </a>
+
+          <!-- Molty -->
+          <a
+            href="#"
+            class="block p-8 border border-zinc-800 rounded-xl hover:border-zinc-600 hover:bg-zinc-900/40 transition group"
+          >
+            <div class="flex items-start justify-between gap-6">
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-3">
+                  <h3 class="text-2xl font-semibold">Molty</h3>
+                  <span class="font-mono text-xs px-2 py-0.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded">
+                    BUILDING
+                  </span>
+                </div>
+                <p class="text-zinc-400 mb-4 max-w-3xl">
+                  An OpenClaw-powered personal agent built on Kimi K2.5.
+                  Long-running, vault-backed, and tool-native.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="font-mono text-xs px-2 py-1 bg-zinc-900 border border-zinc-800 rounded text-zinc-400">OpenClaw</span>
+                  <span class="font-mono text-xs px-2 py-1 bg-zinc-900 border border-zinc-800 rounded text-zinc-400">Kimi K2.5</span>
+                </div>
+              </div>
+              <div class="text-zinc-600 group-hover:text-zinc-300 group-hover:translate-x-1 transition transform text-2xl">
+                →
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LLC -->
+    <section id="llc" class="border-t border-zinc-900 relative overflow-hidden">
+      <div class="max-w-6xl mx-auto px-6 py-32">
+        <div class="font-mono text-xs text-zinc-500 mb-6">/ MODERNIZED AI LLC</div>
+        <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-12">
+          The container.
+        </h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="md:col-span-2 text-lg text-zinc-300 leading-relaxed space-y-4">
+            <p>
+              <span class="text-white font-medium">Modernized AI LLC</span>
+              is an intellectual-property holding company. It owns the
+              trademarks, codebases, and creative work behind the projects
+              shipped on this site.
+            </p>
+            <p>
+              It isn't an agency, a consultancy, or a product company. It's a
+              quiet legal container — the place where the work lives so it can
+              be licensed, partnered on, or spun out without friction.
+            </p>
+          </div>
+          <div class="border border-zinc-800 rounded-lg p-6 bg-zinc-900/30">
+            <div class="font-mono text-xs text-zinc-500 mb-4">ENTITY</div>
+            <dl class="space-y-3 text-sm">
+              <div>
+                <dt class="text-zinc-500">Name</dt>
+                <dd class="text-zinc-100">Modernized AI LLC</dd>
+              </div>
+              <div>
+                <dt class="text-zinc-500">Type</dt>
+                <dd class="text-zinc-100">IP holding company</dd>
+              </div>
+              <div>
+                <dt class="text-zinc-500">Principal</dt>
+                <dd class="text-zinc-100">Elliott Bregni</dd>
+              </div>
+              <div>
+                <dt class="text-zinc-500">Domain</dt>
+                <dd class="text-zinc-100 font-mono">modernized-ai.com</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="border-t border-zinc-900">
+      <div class="max-w-6xl mx-auto px-6 py-32">
+        <div class="font-mono text-xs text-zinc-500 mb-6">/ CONTACT</div>
+        <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-16">
+          Get in touch.
+        </h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a
+            href="mailto:bregnie34@gmail.com"
+            class="flex items-center justify-between p-6 border border-zinc-800 rounded-lg hover:border-zinc-600 hover:bg-zinc-900/40 transition group"
+          >
+            <div>
+              <div class="font-mono text-xs text-zinc-500 mb-1">EMAIL</div>
+              <div class="text-zinc-100 text-lg group-hover:text-white">
+                bregnie34@gmail.com
+              </div>
+            </div>
+            <span class="text-zinc-600 group-hover:text-zinc-300 transition">↗</span>
+          </a>
+          <a
+            href="https://github.com/ElliottBregni"
+            target="_blank"
+            rel="noopener"
+            class="flex items-center justify-between p-6 border border-zinc-800 rounded-lg hover:border-zinc-600 hover:bg-zinc-900/40 transition group"
+          >
+            <div>
+              <div class="font-mono text-xs text-zinc-500 mb-1">GITHUB</div>
+              <div class="text-zinc-100 text-lg group-hover:text-white">
+                @ElliottBregni
+              </div>
+            </div>
+            <span class="text-zinc-600 group-hover:text-zinc-300 transition">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-zinc-900">
+      <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-sm text-zinc-600">
+        <div>© 2026 Modernized AI LLC. All rights reserved.</div>
+        <div class="font-mono text-xs">
+          built by elliott · modernized-ai.com
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
