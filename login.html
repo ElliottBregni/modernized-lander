@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign in — Modernized AI</title>
+  <meta name="theme-color" content="#09090b" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #09090b;
+      --surface: #111113;
+      --border: #1c1c1f;
+      --border-hover: rgba(129,140,248,0.35);
+      --text: #f4f4f5;
+      --muted: #71717a;
+      --indigo: #818cf8;
+      --violet: #a78bfa;
+      --emerald: #34d399;
+      --red: #f87171;
+    }
+
+    html { scroll-behavior: smooth; color-scheme: dark; }
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    ::selection { background: rgba(129,140,248,0.25); color: #fff; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #09090b; }
+    ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 3px; }
+
+    /* grid bg */
+    body::before {
+      content: "";
+      position: fixed; inset: 0; z-index: -1;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 52px 52px;
+    }
+    body::after {
+      content: "";
+      position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(99,102,241,0.15), transparent 65%);
+    }
+
+    /* card */
+    .card {
+      width: 100%; max-width: 420px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.5), 0 24px 64px rgba(0,0,0,0.4);
+    }
+
+    /* logo / wordmark */
+    .wordmark {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.8rem;
+      color: var(--text);
+      text-decoration: none;
+      margin-bottom: 2rem;
+    }
+    .wordmark .diamond { color: var(--indigo); font-size: 1rem; }
+    .wordmark .dim { color: var(--muted); }
+
+    h1 {
+      font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+    }
+    .subtitle {
+      font-size: 0.875rem; color: var(--muted); margin-bottom: 1.75rem; line-height: 1.5;
+    }
+
+    /* divider */
+    .divider {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin: 1.5rem 0;
+      font-size: 0.75rem; color: var(--muted); font-family: "JetBrains Mono", monospace;
+    }
+    .divider::before, .divider::after {
+      content: ""; flex: 1; height: 1px; background: var(--border);
+    }
+
+    /* oauth button */
+    .btn-oauth {
+      display: flex; align-items: center; justify-content: center; gap: 0.625rem;
+      width: 100%; padding: 0.75rem 1rem;
+      background: #18181b;
+      border: 1px solid var(--border);
+      border-radius: 0.625rem;
+      color: var(--text);
+      font-size: 0.875rem; font-weight: 500;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .btn-oauth:hover {
+      border-color: var(--border-hover);
+      background: #1c1c22;
+      box-shadow: 0 0 0 3px rgba(129,140,248,0.08);
+    }
+    .btn-oauth:disabled { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
+    .btn-oauth svg { flex-shrink: 0; }
+
+    /* email form */
+    label {
+      display: block; font-size: 0.8rem; font-weight: 500;
+      color: #a1a1aa; margin-bottom: 0.4rem;
+    }
+    input[type="email"], input[type="password"] {
+      width: 100%; padding: 0.7rem 0.875rem;
+      background: #0d0d0f;
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      color: var(--text);
+      font-size: 0.875rem; font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    input:focus {
+      border-color: rgba(129,140,248,0.5);
+      box-shadow: 0 0 0 3px rgba(129,140,248,0.1);
+    }
+    input::placeholder { color: var(--muted); }
+    .field { margin-bottom: 1rem; }
+    .field-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; }
+    .field-row label { margin-bottom: 0; }
+    .forgot { font-size: 0.75rem; color: var(--indigo); text-decoration: none; }
+    .forgot:hover { color: var(--violet); }
+
+    /* primary button */
+    .btn-primary {
+      width: 100%; padding: 0.75rem 1rem;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      border: none;
+      border-radius: 0.625rem;
+      color: #fff;
+      font-size: 0.875rem; font-weight: 600; font-family: inherit;
+      cursor: pointer;
+      transition: opacity 0.2s, box-shadow 0.2s;
+      margin-top: 0.25rem;
+    }
+    .btn-primary:hover { opacity: 0.9; box-shadow: 0 4px 20px rgba(99,102,241,0.35); }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    /* status / error */
+    #status {
+      min-height: 1.25rem; margin-top: 1rem;
+      font-size: 0.8rem; font-family: "JetBrains Mono", monospace;
+      text-align: center; color: var(--muted);
+    }
+    #status.error { color: var(--red); }
+    #status.success { color: var(--emerald); }
+
+    /* toggle sign-up/in */
+    .toggle {
+      margin-top: 1.5rem; text-align: center;
+      font-size: 0.8rem; color: var(--muted);
+    }
+    .toggle a { color: var(--indigo); text-decoration: none; }
+    .toggle a:hover { color: var(--violet); }
+
+    /* magic link confirm */
+    .magic-confirm {
+      display: none; text-align: center; padding: 1rem 0;
+    }
+    .magic-confirm .icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+    .magic-confirm h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .magic-confirm p { font-size: 0.875rem; color: var(--muted); line-height: 1.5; }
+
+    /* signed-in state */
+    .signed-in { display: none; text-align: center; padding: 1rem 0; }
+    .signed-in .icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .signed-in h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .signed-in p { font-size: 0.875rem; color: var(--muted); margin-bottom: 1.25rem; }
+    .btn-signout {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.6rem 1.2rem;
+      background: #18181b; border: 1px solid var(--border);
+      border-radius: 0.5rem; color: var(--muted);
+      font-size: 0.8rem; cursor: pointer; font-family: inherit;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-signout:hover { border-color: var(--red); color: var(--red); }
+
+    /* notice banner */
+    .notice {
+      margin-bottom: 1.5rem; padding: 0.75rem 1rem;
+      background: rgba(129,140,248,0.06);
+      border: 1px solid rgba(129,140,248,0.15);
+      border-radius: 0.5rem;
+      font-size: 0.8rem; color: #a5b4fc; line-height: 1.5;
+    }
+
+    /* tabs */
+    .tabs { display: flex; gap: 0; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+    .tab {
+      padding: 0.5rem 1rem; font-size: 0.8rem; font-weight: 500;
+      color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      margin-bottom: -1px;
+      background: none; border-top: none; border-left: none; border-right: none;
+      font-family: inherit;
+    }
+    .tab.active { color: var(--text); border-bottom-color: var(--indigo); }
+
+    /* spinner */
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner {
+      display: inline-block; width: 14px; height: 14px;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle; margin-right: 6px;
+    }
+
+    /* footer */
+    .card-footer {
+      margin-top: 1.5rem; padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.72rem; color: var(--muted);
+      font-family: "JetBrains Mono", monospace;
+    }
+    .card-footer a { color: var(--indigo); text-decoration: none; }
+    .card-footer a:hover { color: var(--violet); }
+
+    @keyframes fade-in { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+    .card { animation: fade-in 0.4s cubic-bezier(0.16,1,0.3,1); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <a href="index.html" class="wordmark">
+      <span class="diamond">◈</span>
+      modernized-ai<span class="dim">.com</span>
+    </a>
+
+    <!-- signed-in view -->
+    <div class="signed-in" id="signed-in">
+      <div class="icon">✦</div>
+      <h2>You're signed in.</h2>
+      <p id="signed-in-email"></p>
+      <button class="btn-signout" id="btn-signout">Sign out</button>
+    </div>
+
+    <!-- magic link confirm -->
+    <div class="magic-confirm" id="magic-confirm">
+      <div class="icon">✉️</div>
+      <h2>Check your email</h2>
+      <p>We sent a magic link to <strong id="magic-email"></strong>.<br/>Click it to sign in — no password needed.</p>
+    </div>
+
+    <!-- auth form -->
+    <div id="auth-form">
+      <h1>Welcome back.</h1>
+      <p class="subtitle">Sign in to access Modernized AI apps.<br/>No spam, no obligations.</p>
+
+      <div class="notice">
+        This is a <strong>universal sign-in</strong> for all Modernized AI products. Creating an account doesn't commit you to anything — it's just a secure identity layer.
+      </div>
+
+      <!-- tabs: Sign in / Sign up -->
+      <div class="tabs">
+        <button class="tab active" id="tab-signin" onclick="setTab('signin')">Sign in</button>
+        <button class="tab" id="tab-signup" onclick="setTab('signup')">Create account</button>
+      </div>
+
+      <!-- GitHub OAuth -->
+      <button class="btn-oauth" id="btn-github">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/>
+        </svg>
+        Continue with GitHub
+      </button>
+
+      <div class="divider">or</div>
+
+      <!-- email/password form -->
+      <form id="email-form" onsubmit="handleEmailSubmit(event)">
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@example.com" autocomplete="email" required />
+        </div>
+        <div class="field" id="password-field">
+          <div class="field-row">
+            <label for="password">Password</label>
+            <a href="#" class="forgot" id="forgot-link" onclick="handleForgot(event)">Forgot?</a>
+          </div>
+          <input type="password" id="password" placeholder="••••••••" autocomplete="current-password" minlength="6" />
+        </div>
+        <div class="field" id="confirm-field" style="display:none;">
+          <label for="confirm">Confirm password</label>
+          <input type="password" id="confirm" placeholder="••••••••" autocomplete="new-password" minlength="6" />
+        </div>
+        <button type="submit" class="btn-primary" id="btn-submit">Sign in</button>
+      </form>
+
+      <div id="status"></div>
+    </div>
+
+    <div class="card-footer">
+      <a href="index.html">← back to modernized-ai.com</a>
+    </div>
+  </div>
+
+  <script type="module">
+    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+    const SUPABASE_URL = 'https://cnwxxlruuuqisjezsgje.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_9I9IqX9bKKHMfQdjklZAdg_DpTbdPyM';
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    let mode = 'signin'; // 'signin' | 'signup'
+
+    window.setTab = (t) => {
+      mode = t;
+      document.getElementById('tab-signin').classList.toggle('active', t === 'signin');
+      document.getElementById('tab-signup').classList.toggle('active', t === 'signup');
+      document.getElementById('btn-submit').textContent = t === 'signin' ? 'Sign in' : 'Create account';
+      document.getElementById('confirm-field').style.display = t === 'signup' ? 'block' : 'none';
+      document.getElementById('forgot-link').style.display = t === 'signin' ? '' : 'none';
+      const pwd = document.getElementById('password');
+      pwd.autocomplete = t === 'signup' ? 'new-password' : 'current-password';
+      clearStatus();
+    };
+
+    window.handleForgot = async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      if (!email) { setStatus('Enter your email first.', 'error'); return; }
+      setStatus('<span class="spinner"></span>Sending reset email…');
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: location.origin + '/login.html',
+      });
+      if (error) setStatus(error.message, 'error');
+      else setStatus('✓ Reset email sent. Check your inbox.', 'success');
+    };
+
+    window.handleEmailSubmit = async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const btn = document.getElementById('btn-submit');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span>' + (mode === 'signin' ? 'Signing in…' : 'Creating account…');
+      clearStatus();
+
+      if (mode === 'signup') {
+        const confirm = document.getElementById('confirm').value;
+        if (password !== confirm) {
+          setStatus('Passwords don\'t match.', 'error');
+          resetBtn(); return;
+        }
+        const { error } = await supabase.auth.signUp({ email, password });
+        if (error) { setStatus(error.message, 'error'); resetBtn(); return; }
+        document.getElementById('magic-email').textContent = email;
+        document.getElementById('auth-form').style.display = 'none';
+        document.getElementById('magic-confirm').style.display = 'block';
+        return;
+      }
+
+      // sign in
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) { setStatus(error.message, 'error'); resetBtn(); return; }
+      setStatus('✓ Signed in!', 'success');
+      setTimeout(() => location.reload(), 800);
+    };
+
+    // GitHub OAuth
+    document.getElementById('btn-github').addEventListener('click', async () => {
+      const btn = document.getElementById('btn-github');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span>Redirecting to GitHub…';
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'github',
+        options: { redirectTo: location.href },
+      });
+      if (error) {
+        setStatus(error.message, 'error');
+        btn.disabled = false;
+        btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>Continue with GitHub`;
+      }
+    });
+
+    // sign out
+    document.getElementById('btn-signout').addEventListener('click', async () => {
+      await supabase.auth.signOut();
+      location.reload();
+    });
+
+    function setStatus(msg, cls) {
+      const el = document.getElementById('status');
+      el.innerHTML = msg;
+      el.className = cls || '';
+    }
+    function clearStatus() { setStatus(''); }
+    function resetBtn() {
+      const btn = document.getElementById('btn-submit');
+      btn.disabled = false;
+      btn.textContent = mode === 'signin' ? 'Sign in' : 'Create account';
+    }
+
+    // check session on load
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session) {
+      document.getElementById('auth-form').style.display = 'none';
+      document.getElementById('signed-in').style.display = 'block';
+      const email = session.user.email || session.user.user_metadata?.user_name || 'you';
+      document.getElementById('signed-in-email').textContent = `Signed in as ${email}`;
+    }
+  </script>
+</body>
+</html>
