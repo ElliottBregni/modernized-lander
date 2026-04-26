@@ -225,10 +225,6 @@
       <div class="hero-glow"></div>
       <div class="hero-fade"></div>
       <div class="relative max-w-6xl mx-auto px-6 pt-32 pb-32 w-full">
-        <h1 class="text-[clamp(3.5rem,10vw,7rem)] font-black tracking-[-0.03em] leading-[0.92] mb-8 text-white">
-          <span class="word-reveal shimmer-text" style="animation-delay:0.1s">Modernized</span><br/>
-          <span class="word-reveal shimmer-text" style="animation-delay:0.22s">AI.</span>
-        </h1>
         <p class="text-lg md:text-xl text-zinc-400 max-w-xl mb-4 leading-relaxed">
           Agents, runtimes, and developer tools<br class="hidden md:block"/>built by <span class="text-white font-semibold">Elliott Bregni</span>.
         </p>
@@ -278,7 +274,7 @@
                 <div class="flex-1">
                   <div class="flex items-center gap-3 mb-3">
                     <h3 class="text-2xl font-semibold">Obscura</h3>
-                    <span class="font-mono text-xs px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-md">ACTIVE</span>
+                    <span class="font-mono text-xs px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-md">BETA</span>
                   </div>
                   <p class="text-zinc-400 mb-4 max-w-3xl leading-relaxed">Production-grade AI agent runtime — security-first by design. Capability-gated tool access, RBAC, per-call audit logging, and pluggable secrets management. CLI, REST API, Web UI, and MCP server. Supports Claude, OpenAI, GitHub Copilot, and local LLMs with 100+ tools, vector memory, and 49 plugin integrations.</p>
                   <div class="flex flex-wrap gap-2 mb-4">
@@ -341,6 +337,18 @@
     </footer>
 
     <script>
+      // Hostname-based initial scroll: modernized-ai.com lands on HERO, elliott.bregni stays at top
+      (() => {
+        if (window.location.hash || window.scrollY > 0) return;
+        if (window.location.hostname === 'modernized-ai.com' || window.location.hostname === 'www.modernized-ai.com') {
+          const heroEl = document.getElementById('top');
+          if (!heroEl) return;
+          document.documentElement.style.scrollBehavior = 'auto';
+          heroEl.scrollIntoView();
+          setTimeout(() => { document.documentElement.style.scrollBehavior = ''; }, 100);
+        }
+      })();
+
       const nav = document.getElementById('nav');
       window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), {passive:true});
 

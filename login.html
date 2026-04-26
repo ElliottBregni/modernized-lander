@@ -200,12 +200,20 @@
 
     /* notice banner */
     .notice {
-      margin-bottom: 1.5rem; padding: 0.75rem 1rem;
+      margin-bottom: 1rem; padding: 0.75rem 1rem;
       background: rgba(129,140,248,0.06);
       border: 1px solid rgba(129,140,248,0.15);
       border-radius: 0.5rem;
       font-size: 0.8rem; color: #a5b4fc; line-height: 1.5;
     }
+    .notice + .notice { margin-bottom: 1.5rem; }
+    .notice.notice-disclaimer {
+      background: rgba(113,113,122,0.06);
+      border-color: rgba(113,113,122,0.18);
+      color: #a1a1aa;
+      font-size: 0.72rem;
+    }
+    .notice.notice-disclaimer strong { color: #d4d4d8; }
 
     /* tabs */
     .tabs { display: flex; gap: 0; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
@@ -273,7 +281,10 @@
       <p class="subtitle">Sign in to access Modernized AI apps.<br/>No spam, no obligations.</p>
 
       <div class="notice">
-        This is a <strong>universal sign-in</strong> for all Modernized AI products. Creating an account doesn't commit you to anything — it's just a secure identity layer.
+        Universal sign-in for <strong>Modernized AI LLC</strong> products only. Creating an account doesn't commit you to anything — it's just a secure identity layer.
+      </div>
+      <div class="notice notice-disclaimer">
+        <strong>Notice:</strong> This is an independent personal project. It is not affiliated with, operated by, or an authentication portal for <strong>Overhaul</strong>, <strong>FreightVerify</strong>, or any employer-managed system, and provides no access to those systems or their data.
       </div>
 
       <!-- tabs: Sign in / Sign up -->
