@@ -28,6 +28,7 @@
       .hero-fade{position:absolute;bottom:0;left:0;right:0;height:180px;pointer-events:none;background:linear-gradient(to bottom,transparent,#09090b);}
       @keyframes shimmer{0%{background-position:-200% center;}100%{background-position:200% center;}}
       .shimmer-text{background:linear-gradient(105deg,#fff 0%,#fff 35%,#a78bfa 50%,#818cf8 55%,#fff 65%,#71717a 100%);background-size:300% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 7s linear infinite;}
+      .shimmer-text-rev{background:linear-gradient(105deg,#71717a 0%,#fff 35%,#818cf8 45%,#a78bfa 50%,#fff 65%,#fff 100%);background-size:300% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 7s linear infinite;}
       @keyframes word-in{from{opacity:0;transform:translateY(28px) skewY(4deg);filter:blur(6px);}to{opacity:1;transform:none;filter:blur(0);}}
       .word-reveal{display:inline-block;opacity:0;animation:word-in 0.7s cubic-bezier(0.16,1,0.3,1) forwards;}
       @keyframes blink{50%{opacity:0;}}
@@ -95,7 +96,7 @@
           in-transit security · chain of custody · cargo that matters
         </p>
         <p class="text-zinc-500 text-sm reveal reveal-d3 max-w-md">
-          Quiet build on secure, real-time supply-chain visibility — observability, chain-of-custody, and hardening for goods that can't afford to disappear. Only what's already public, for now.
+          Quiet build on secure, real-time supply-chain visibility — observability, chain-of-custody, and hardening for goods that can't afford to disappear.
         </p>
       </div>
     </section>
@@ -198,20 +199,26 @@
             <li class="flex gap-2"><span class="text-indigo-400">→</span>Cross-team integration work</li>
           </ul>
         </div>
+      </div>
+    </section>
 
-        <!-- LLC framing -->
-        <h2 id="llc" class="text-4xl md:text-5xl font-bold tracking-tight mt-24 mb-12 reveal reveal-d1">The container.</h2>
+    <!-- CONTAINER (Modernized AI LLC) -->
+    <section id="container" class="border-t border-zinc-900">
+      <div class="max-w-6xl mx-auto px-6 py-28">
         <div class="grid md:grid-cols-3 gap-8">
-          <div class="md:col-span-2 text-lg text-zinc-300 leading-relaxed space-y-5 reveal reveal-d2">
-            <p><span class="text-white font-semibold">Modernized AI LLC</span> is an intellectual-property holding company. It owns the trademarks, codebases, and creative work behind the projects shipped on this site.</p>
-            <p>It isn't an agency, a consultancy, or a product company. It's a quiet legal container — the place where the work lives so it can be licensed, partnered on, or spun out without friction.</p>
+          <div class="md:col-span-2 reveal reveal-d2">
+            <h2 class="text-3xl md:text-5xl font-bold tracking-tight shimmer-text-rev mb-6 leading-[1.05]">Modernized AI LLC</h2>
+            <div class="text-lg text-zinc-300 leading-relaxed space-y-5">
+              <p>An intellectual-property holding company. It owns the trademarks, codebases, and creative work behind the projects shipped on this site.</p>
+              <p>It isn't an agency, a consultancy, or a product company. It's a quiet legal container — the place where the work lives so it can be licensed, partnered on, or spun out without friction.</p>
+            </div>
           </div>
           <div class="bento-card reveal reveal-d3">
             <div class="font-mono text-xs text-zinc-500 mb-4">ENTITY</div>
             <dl class="space-y-3 text-sm">
               <div><dt class="text-zinc-500">Name</dt><dd class="text-zinc-100 mt-0.5">Modernized AI LLC</dd></div>
               <div><dt class="text-zinc-500">Type</dt><dd class="text-zinc-100 mt-0.5">IP holding company</dd></div>
-              <div><dt class="text-zinc-500">Principal</dt><dd class="text-zinc-100 mt-0.5">Elliott Bregni</dd></div>
+              <div><dt class="text-zinc-500">Founder</dt><dd class="text-zinc-100 mt-0.5">Elliott Bregni</dd></div>
               <div><dt class="text-zinc-500">Location</dt><dd class="text-zinc-100 mt-0.5">Ann Arbor, MI</dd></div>
               <div><dt class="text-zinc-500">Domain</dt><dd class="text-zinc-100 font-mono mt-0.5">modernized-ai.com</dd></div>
             </dl>
@@ -226,7 +233,7 @@
       <div class="hero-fade"></div>
       <div class="relative max-w-6xl mx-auto px-6 pt-32 pb-32 w-full">
         <p class="text-lg md:text-xl text-zinc-400 max-w-xl mb-4 leading-relaxed">
-          Agents, runtimes, and developer tools<br class="hidden md:block"/>built by <span class="text-white font-semibold">Elliott Bregni</span>.
+          Agents, runtimes, and developer tools.
         </p>
         <p class="font-mono text-sm text-zinc-600 mb-10 min-h-[1.5rem]"><span id="typewriter"></span></p>
         <div class="flex flex-wrap gap-3">
@@ -337,14 +344,14 @@
     </footer>
 
     <script>
-      // Hostname-based initial scroll: modernized-ai.com lands on HERO, elliott.bregni stays at top
+      // Hostname-based initial scroll: modernized-ai.com lands on the container, elliott.bregni stays at top
       (() => {
         if (window.location.hash || window.scrollY > 0) return;
         if (window.location.hostname === 'modernized-ai.com' || window.location.hostname === 'www.modernized-ai.com') {
-          const heroEl = document.getElementById('top');
-          if (!heroEl) return;
+          const containerEl = document.getElementById('container');
+          if (!containerEl) return;
           document.documentElement.style.scrollBehavior = 'auto';
-          heroEl.scrollIntoView();
+          containerEl.scrollIntoView();
           setTimeout(() => { document.documentElement.style.scrollBehavior = ''; }, 100);
         }
       })();
@@ -359,15 +366,15 @@
         function tick(){const p=phrases[pi];if(!del){tw.textContent=p.slice(0,++ci);if(ci===p.length){del=true;setTimeout(tick,2200);return;}setTimeout(tick,42);}else{tw.textContent=p.slice(0,--ci);if(ci===0){del=false;pi=(pi+1)%phrases.length;setTimeout(tick,400);return;}setTimeout(tick,22);}}
         setTimeout(tick,startDelay);
       }
-      makeTypewriter('typewriter',['SWE III · Full-stack engineer','Ann Arbor, MI', 'Building agents that actually work.', 'Modernized AI', 'AI agents · MCP · RAG · Harness'],900);
-      makeTypewriter('typewriter2',['SWE III · Full-stack engineer','Ann Arbor, MI','FreightVerify → Overhaul','Modernized AI','10 years building','B.S. CIS · Ferris State University'],1400);
+      makeTypewriter('typewriter',["Data Governance and Security", 'Building agents that actually work.', "AI agents · MCP · RAG", 'Ann Arbor, MI'],900);
+      makeTypewriter('typewriter2',['SWE III · Full-stack engineer','Ann Arbor, MI','FreightVerify → Overhaul','Supply Chain Technology at scale', "Entirprise Data Pipelines",'10 years building','B.S. CIS · Ferris State University'],1400);
 
       const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
       document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
       const navDomain=document.getElementById('nav-domain-name');
-      const heroEl=document.getElementById('top');
-      if(navDomain&&heroEl){
+      const containerEl=document.getElementById('container');
+      if(navDomain&&containerEl){
         let lastState=null;
         const applyState=(isModernized)=>{
           if(isModernized===lastState)return;
@@ -377,10 +384,10 @@
           document.title=isModernized?'Modernized AI':'Elliott Bregni';
         };
         const navObs=new IntersectionObserver(entries=>entries.forEach(e=>{
-          const pastHero=e.boundingClientRect.top<0;
-          applyState(e.isIntersecting||pastHero);
+          const pastContainer=e.boundingClientRect.top<0;
+          applyState(e.isIntersecting||pastContainer);
         }),{threshold:0.25});
-        navObs.observe(heroEl);
+        navObs.observe(containerEl);
       }
 
       document.querySelectorAll('.tilt-card').forEach(card=>{
