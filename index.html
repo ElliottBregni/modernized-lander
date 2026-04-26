@@ -137,7 +137,7 @@
           </span>
         </div>
         <p class="font-mono text-sm text-zinc-400 mb-4 reveal">
-          <span class="text-zinc-200">SDE III</span> · <a href="https://over-haul.com/overhaul-acquires-freightverify/" target="_blank" rel="noopener" class="text-indigo-400 hover:text-indigo-300 underline-offset-4 hover:underline">Overhaul</a>
+          <a href="https://www.over-haul.com/resources?category_equal=%5B%22Blogs%22%5D#resource-block" target="_blank" rel="noopener" class="text-indigo-400 hover:text-indigo-300 underline-offset-4 hover:underline">Overhaul</a>
         </p>
         <h2 class="text-3xl md:text-5xl font-bold tracking-tight shimmer-text mb-4 reveal reveal-d1 max-w-3xl leading-[1.05]">
           Real-time visibility. Secure by design.
@@ -339,7 +339,7 @@
       const nav = document.getElementById('nav');
       window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), {passive:true});
 
-      const phrases = ['Full-stack engineer · Ann Arbor, MI','Building agents that actually work.','FreightVerify → Overhaul * Modernized AI.','B.S. CIS · Ferris State University'];
+      const phrases = ['SWE III · Full-stack engineer','Building agents that actually work.','FreightVerify → Overhaul','Modernized AI','B.S. CIS · Ferris State University'];
       let pi=0,ci=0,del=false;
       const tw=document.getElementById('typewriter');
       function tick(){const p=phrases[pi];if(!del){tw.textContent=p.slice(0,++ci);if(ci===p.length){del=true;setTimeout(tick,2200);return;}setTimeout(tick,42);}else{tw.textContent=p.slice(0,--ci);if(ci===0){del=false;pi=(pi+1)%phrases.length;setTimeout(tick,400);return;}setTimeout(tick,22);}}
