@@ -1,6 +1,6 @@
 # modernized-lander
 
-Landing page for [modernized-ai.com](https://modernized-ai.com) — Modernized AI LLC.
+Landing page for [elliott.bregni.com](https://elliott.bregni.com) — Modernized AI LLC.
 
 Plain HTML + Tailwind (CDN), no build step. Served via GitHub Pages from `main`.
 
@@ -19,9 +19,9 @@ Pushing to `main` redeploys via GitHub Pages.
 
 ## Custom domain
 
-To point `modernized-ai.com` at this site:
+To point `elliott.bregni.com` at this site:
 
-1. Add a `CNAME` file at the repo root containing `modernized-ai.com`
+1. Add a `CNAME` file at the repo root containing `elliott.bregni.com`
 2. In your DNS provider, add either:
    - `A` records for the apex pointing to `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`, **or**
    - `CNAME` for `www` → `elliottbregni.github.io`
