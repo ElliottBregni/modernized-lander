@@ -63,19 +63,19 @@
     <!-- NAV -->
     <nav id="nav" class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-zinc-950/75 border-b border-zinc-900 transition-all duration-300">
       <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#container" class="font-mono text-sm text-white tracking-tight flex items-center gap-1.5">
+        <a href="#AI" class="font-mono text-sm text-white tracking-tight flex items-center gap-1.5">
           <span class="text-indigo-400">◈</span><span id="nav-domain-name" class="transition-opacity duration-300">elliott.bregni</span><span class="text-zinc-600">.com</span>
         </a>
         <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
-          <a href="#about" class="hover:text-white transition-colors">About</a>
+          <a href="#aboutme" class="hover:text-white transition-colors">About</a>
           <a href="#projects" class="hover:text-white transition-colors">Projects</a>
-          <a href="login.html" class="px-3 py-1.5 font-medium text-zinc-100 border border-zinc-700 rounded-md hover:border-indigo-400/50 hover:text-white transition-all">Sign in →</a>
+          <a href="login.html" id="nav-signin" class="px-3 py-1.5 font-medium text-zinc-100 border border-zinc-700 rounded-md hover:border-indigo-400/50 hover:text-white transition-all opacity-0 pointer-events-none transition-opacity duration-300">Sign in →</a>
         </div>
       </div>
     </nav>
 
-    <!-- DAY JOB (lead) -->
-    <section id="day-job" class="relative overflow-hidden">
+    <!-- ABOUT ME — Day Job (lead) [HIDDEN] -->
+    <section id="aboutme" class="relative overflow-hidden" hidden>
       <div class="hero-glow opacity-40"></div>
       <div class="relative max-w-6xl mx-auto px-6 pt-32 pb-24">
         <div class="flex items-center gap-3 mb-8 reveal flex-wrap">
@@ -101,8 +101,8 @@
       </div>
     </section>
 
-    <!-- ABOUT (personal → LLC container) -->
-    <section id="about" class="border-t border-zinc-900">
+    <!-- ABOUT (personal) -->
+    <section class="border-t border-zinc-900">
       <div class="max-w-6xl mx-auto px-6 py-28">
         <div class="flex items-center gap-3 mb-6 reveal flex-wrap">
           <span class="font-mono text-xs text-zinc-500 tracking-wider uppercase">/ Me</span>
@@ -203,7 +203,7 @@
     </section>
 
     <!-- CONTAINER (Modernized AI LLC) -->
-    <section id="container" class="border-t border-zinc-900">
+    <section id="AI" class="border-t border-zinc-900">
       <div class="max-w-6xl mx-auto px-6 py-28">
         <div class="grid md:grid-cols-3 gap-8">
           <div class="md:col-span-2 reveal reveal-d2">
@@ -211,6 +211,9 @@
             <div class="text-lg text-zinc-300 leading-relaxed space-y-5">
               <p>An intellectual-property holding company. It owns the trademarks, codebases, and creative work behind the projects shipped on this site.</p>
               <p>It isn't an agency, a consultancy, or a product company. It's a quiet legal container — the place where the work lives so it can be licensed, partnered on, or spun out without friction.</p>
+            </div>
+            <div class="mt-8 px-4 py-3 border border-zinc-800 rounded-lg bg-zinc-900/30 font-mono text-xs text-zinc-500 leading-relaxed">
+              <span class="text-zinc-300">Notice:</span> All intellectual property held by Modernized AI LLC — codebases, agents, runtimes, and developer tools — is shared for educational and research purposes only. It is not offered, marketed, sold, or supported as a commercial product, and bears no relation to Overhaul products, services, or systems.
             </div>
           </div>
           <div class="bento-card reveal reveal-d3">
@@ -228,7 +231,7 @@
     </section>
 
     <!-- HERO -->
-    <section id="top" class="relative flex items-center grid-bg overflow-hidden border-t border-zinc-900">
+    <section id="hero" class="relative flex items-center grid-bg overflow-hidden border-t border-zinc-900">
       <div class="hero-glow"></div>
       <div class="hero-fade"></div>
       <div class="relative max-w-6xl mx-auto px-6 pt-32 pb-32 w-full">
@@ -348,7 +351,7 @@
       (() => {
         if (window.location.hash || window.scrollY > 0) return;
         if (window.location.hostname === 'modernized-ai.com' || window.location.hostname === 'www.modernized-ai.com') {
-          const containerEl = document.getElementById('container');
+          const containerEl = document.getElementById('AI');
           if (!containerEl) return;
           document.documentElement.style.scrollBehavior = 'auto';
           containerEl.scrollIntoView();
@@ -373,7 +376,8 @@
       document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
       const navDomain=document.getElementById('nav-domain-name');
-      const containerEl=document.getElementById('container');
+      const navSignin=document.getElementById('nav-signin');
+      const containerEl=document.getElementById('AI');
       if(navDomain&&containerEl){
         let lastState=null;
         const applyState=(isModernized)=>{
@@ -382,6 +386,10 @@
           navDomain.style.opacity='0';
           setTimeout(()=>{navDomain.textContent=isModernized?'modernized-ai':'elliott.bregni';navDomain.style.opacity='1';},150);
           document.title=isModernized?'Modernized AI':'Elliott Bregni';
+          if(navSignin){
+            navSignin.style.opacity=isModernized?'1':'0';
+            navSignin.style.pointerEvents=isModernized?'':'none';
+          }
         };
         const navObs=new IntersectionObserver(entries=>entries.forEach(e=>{
           const pastContainer=e.boundingClientRect.top<0;
